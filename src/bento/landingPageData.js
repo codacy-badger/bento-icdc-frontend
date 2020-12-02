@@ -1,5 +1,4 @@
-// import Test from '../assets/header/CTDC_Logo.svg';
-
+/* eslint-disable */
 // The ideal image size of landingPageHero 1400x600px
 // Tile1 Tile2 Tile3 images 293x349 px
 // Tile4 image optimum size 600x 436 px
@@ -8,18 +7,17 @@ export const landingPageData = {
   callToActionDescription: 'A public resource for exploring, analyzing, and understanding the biological relationships between human and canine cancers.',
   callToActionButtonText: 'EXPLORE',
   callToActionLink: '/cases',
-  landingPageHero: {
-    alt: 'Alt tag1',
-    img: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/landing/Hero_Graphic.png',
+  landingPageBg:{
+    img: 'https://raw.githubusercontent.com/CBIIT/bento-icdc-frontend/master/src/assets/landing/LP-Background.1400x1600.jpg',
   },
   landingPageStatsBar: [],
   tile1: {
     alt: '',
-    img: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/landing/tileAbout.png',
-    titleText: 'The Bento Framework',
-    descriptionText: 'Effective data management is key to scientific discovery. Bento is an open source framework, developed by the Frederick National Laboratory for Cancer Research, to support the creation of data sharing platforms, that adhere to the FAIR principles of scientific data management.',
-    callToActionText: 'Read More',
-    callToActionLink: '/bento', // This links to the "About" static page.
+    img: 'https://raw.githubusercontent.com/CBIIT/bento-icdc-frontend/master/src/assets/landing/LP_About.png',
+    titleText: 'About the Integrated Canine Data Commons (ICDC)',
+    descriptionText: 'NCI\'s Division of Cancer Treatment and Diagnosis (DCTD) charged the Frederick National Laboratory for Cancer Research (FNLCR) to build the Integrated Canine Data Commons (ICDC), a cloud-based repository of canine cancer data. ICDC was established to further research on human cancers by enabling comparative analysis with canine cancer. The data in the ICDC is sourced from multiple different programs and projects; all focused on canine subjects.',
+    callToActionText: 'FULL ARTICLE',
+    callToActionLink: '/purpose', // This links to the "About" static page.
   },
   tile2: {
     alt: '',

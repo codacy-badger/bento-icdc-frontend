@@ -1,14 +1,97 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Grid,
   withStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
 import StatsView from './components/statsView';
 import { Button } from '../../components/Wrappers/Wrappers';
 import { landingPageData } from '../../bento/landingPageData';
 import icon from '../../assets/landing/LP_ReadMore.svg';
 import iconAbout from '../../assets/landing/LP_About_Fullarticle.Arrow.svg';
+import starImg from '../../assets/LP_FLARE.2.png';
+import dogImg from '../../assets/landing/dog-bubble.png';
+import humanImg from '../../assets/landing/human-bubble.png';
+
+const slideDown = keyframes`
+  0% {
+    top: 0;
+    left:0;
+  }
+  50% {
+    top: 350px;
+    left: 30px;
+  }
+
+  100% {
+    top: 0;
+    left:0;
+  }
+`;
+
+const slideUp = keyframes`
+  0% {
+
+    top: 0;
+    left:0;
+  }
+
+  50% {
+    top:-390px;
+    left:0px;
+  }
+
+  
+  100% {
+    top: 0;
+    left:0;
+  }
+`;
+
+const star = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  8%{
+    opacity: 0;
+  }
+
+  25%{
+    opacity: 1;
+  }
+
+  32%{
+    opacity: 0;
+  }
+
+  58%{
+    opacity: 0;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+`;
+
+const SlideDown = styled.div`
+  animation: ${slideDown} 20s  0s 1;
+`;
+
+const SlideUp = styled.div`
+  animation: ${slideUp} 20s  0s 1;
+`;
+
+const Star = styled.div`
+  animation: ${star} 20s  0s 1;
+`;
 
 const LandingView = ({ classes, statsData }) => (
   <div className={classes.page}>
@@ -18,6 +101,8 @@ const LandingView = ({ classes, statsData }) => (
           <div className={classes.heroImage} />
           <div className={classes.heroTextContainer}>
             <div className={classes.heroTextWrapper}>
+            <Grid container spacing={16} direction="row">
+             <Grid item lg={3} md={3} sm={12} xs={12}>
               <div className={classes.headerTitle}>
                 { landingPageData.callToActionTitle }
               </div>
@@ -26,17 +111,33 @@ const LandingView = ({ classes, statsData }) => (
               </div>
               <div className={classes.headerButtonSection}>
                 <Link to={landingPageData.callToActionLink} className={classes.headerLink}>
-                  <Button className={classes.buttonText} bgColor="neonBlue" color="white">
+                  <Button className={classes.buttonText}>
                     {landingPageData.callToActionButtonText}
                   </Button>
                 </Link>
               </div>
+              </Grid>
+              <Grid item lg={9} md={9} sm={12} xs={12}>
+               <div>
+                <div className={classes.animationContainer}>
+                  <SlideDown className={classes.dog}>
+                    <img className={classes.dogImg} src={dogImg} alt="Dog" />
+                  </SlideDown>
+                  <SlideUp className={classes.human}>
+                    <img className={classes.humanImg} src={humanImg} alt="human" />
+                  </SlideUp>
+                  <Star className={classes.star}>
+                    <img className={classes.starImg} src={starImg} alt="star" />
+                  </Star>
+                </div>
+              </div>
+              </Grid>
+             </Grid>
             </div>
           </div>
         </Grid>
       </div>
     </div>
-    <div className={classes.whiteSection} />
     {
       statsData ? <StatsView stats={landingPageData.landingPageStatsBar} statsData={statsData} /> : ''
     }
@@ -53,12 +154,7 @@ const LandingView = ({ classes, statsData }) => (
                 />
               </div>
               <div className={classes.DCWords}>
-                {landingPageData.tile1.titleText.match(/\b(\w+)\b/g).map((word) => (
-                  <>
-                    {word}
-                    <br />
-                  </>
-                ))}
+                {landingPageData.tile1.titleText}
               </div>
               <div className={classes.aboutContent}>
                 {landingPageData.tile1.descriptionText}
@@ -180,28 +276,23 @@ const LandingView = ({ classes, statsData }) => (
 const styles = () => ({
   page: {
     marginTop: '-47px',
+    background: '#5E8CA5',
+    backgroundImage: `url(${landingPageData.landingPageBg.img})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
   },
   heroImage: {
     width: '100%',
     height: '420px',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 100%',
-    backgroundImage: `url(${landingPageData.landingPageHero.img})`,
   },
   texture: {
-    backgroundSize: 'cover',
-    background: '#B6DCFC',
     padding: '120px 0 80px 0',
   },
   container: {
     fontFamily: 'Raleway, sans-serif',
     margin: '0 auto',
 
-  },
-
-  whiteSection: {
-    height: '8px',
-    background: 'white',
   },
   redButton: {
     height: '13px',
@@ -216,30 +307,36 @@ const styles = () => ({
     letterSpacing: '0.8px',
   },
   headerTitle: {
-    paddingTop: '94px',
-    fontFamily: 'Inter, Raleway, sans-serif',
-    fontSize: '38px',
-    fontWeight: '600',
-    lineHeight: '35px',
-    color: '#0077E3',
-    letterSpacing: '-0px',
+    paddingTop: '180px',
+    paddingBottom: '12px',
+    width: '208px',
+    color: '#FFFFFF',
+    fontFamily: 'Raleway, sans-serif',
+    fontSize: '40px',
+    fontWeight: 'bold',
+    lineHeight: '40px',
   },
   paddingLeft50: {
     paddingLeft: '50px',
   },
   headerContent: {
-    color: '#000000',
-    fontFamily: 'Lato, Raleway',
+    height: '98px',
+    width: '194px',
+    color: '#CB8311',
+    fontFamily: 'Raleway',
     fontSize: '16px',
     fontWeight: '500',
-    lineHeight: '27px',
-    marginTop: '16px',
-    marginBottom: '26px',
+    lineHeight: '22px',
+    marginBottom: '40px',
   },
   headerLink: {
+     color: '#ffffff',
     textDecoration: 'none',
+    '&:hover': {
+      backgroundColor: '#CB8311',
+      textDecoration: 'none',
+    },
   },
-
   iconAbout: {
     height: '17px',
     width: '9px',
@@ -253,23 +350,20 @@ const styles = () => ({
   },
 
   aboutImage: {
-    width: '297px',
-    height: '249px',
-    padding: '14px',
+    width: '300px',
+    height: '240px',
   },
   aboutImageSection: {
-    height: '249px',
+    height: '240px',
   },
   DCWords: {
-    height: '200px',
-    background: '#274FA5',
+    height: '193px',
+    background: 'rgb(57,192,240,0.3)',
     color: '#FFFFFF',
-    fontSize: '28px',
+    fontSize: '24px',
     fontWeight: 'bold',
-    textTransform: 'capitalize',
-    lineHeight: '36px',
-    padding: '10px 75px 26px 26px',
-    fontFamily: 'Lato',
+    lineHeight: '27px',
+    padding: '35px',
   },
   landingContainer: {
     alignItems: 'center',
@@ -281,7 +375,6 @@ const styles = () => ({
   },
   about: {
     width: '300px',
-    backgroundColor: 'white',
   },
   image: {
     width: '293px',
@@ -456,6 +549,7 @@ const styles = () => ({
     paddingTop: '30px',
   },
   animationContainer: {
+    display: 'none',
     position: 'relative',
     left: '33%',
   },
@@ -477,8 +571,58 @@ const styles = () => ({
     width: '360px',
   },
   buttonText: {
-    padding: '12px 30px',
-    height: '40px',
+    borderRadius: '10px',
+    width: '178px',
+    height: '37px',
+    lineHeight: '18px',
+    fontSize: '14px',
+    fontWeight: 'bolder',
+    color: '#ffffff',
+    textTransform: 'uppercase',
+    backgroundColor: '#CB8311',
+    textDecoration: 'none',
+    boxShadow: 'none !important',
+    '&:hover': {
+      backgroundColor: '#CB8311',
+      color: '#ffffff',
+
+    },
+
+  animationContainer: {
+    position: 'relative',
+    height: '800px',
+    maxHeight: '800px',
+    overflow: 'hidden',
+  },
+
+dogImg: {
+  },
+  humanImg: {
+    position: 'absolute',
+    top: '-800px',
+    left: '350px',
+  },
+  starImg: {
+    width: '300px',
+    position: 'absolute',
+    top: '-2150px',
+    left: '220px',
+  },
+
+  dog: {
+    position: 'relative',
+    height: '1200px',
+  },
+  human: {
+    position: 'relative',
+    height: '1200px',
+
+  },
+  star: {
+    position: 'relative',
+    height: '1200px',
+    opacity: '0',
+  },
   },
 });
 export default withStyles(styles, { withTheme: true })(LandingView);

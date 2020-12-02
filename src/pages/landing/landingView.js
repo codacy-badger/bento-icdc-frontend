@@ -37,7 +37,9 @@ const LandingView = ({ classes, statsData }) => (
       </div>
     </div>
     <div className={classes.whiteSection} />
-    <StatsView stats={landingPageData.landingPageStatsBar} statsData={statsData} />
+    {
+      statsData ? <StatsView stats={landingPageData.landingPageStatsBar} statsData={statsData} /> : ''
+    }
     <div className={classes.container}>
       <div className={classes.texture}>
         <Grid container spacing={16} direction="row" className={classes.landingContainer}>

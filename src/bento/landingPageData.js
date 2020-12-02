@@ -1,40 +1,18 @@
-import gql from 'graphql-tag';
 // import Test from '../assets/header/CTDC_Logo.svg';
 
 // The ideal image size of landingPageHero 1400x600px
 // Tile1 Tile2 Tile3 images 293x349 px
 // Tile4 image optimum size 600x 436 px
 export const landingPageData = {
-  callToActionTitle: 'Explore, Analyze, Visualize Clinical Trial Data Sets',
-  callToActionDescription: 'Model, Store and Share your Data Sets using the Bento Framework for Data Sharing Platforms.',
-  callToActionButtonText: 'EXPLORE THE SITE',
+  callToActionTitle: 'Integrated Canine Data Commons',
+  callToActionDescription: 'A public resource for exploring, analyzing, and understanding the biological relationships between human and canine cancers.',
+  callToActionButtonText: 'EXPLORE',
   callToActionLink: '/cases',
   landingPageHero: {
     alt: 'Alt tag1',
     img: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/landing/Hero_Graphic.png',
   },
-  landingPageStatsBar: [
-    {
-      statTitle: 'Programs',
-      statAPI: 'numberOfPrograms',
-    },
-    {
-      statTitle: 'Arms',
-      statAPI: 'numberOfStudies',
-    },
-    {
-      statTitle: 'Cases',
-      statAPI: 'numberOfSubjects',
-    },
-    {
-      statTitle: 'samples',
-      statAPI: 'numberOfSamples',
-    },
-    {
-      statTitle: 'files',
-      statAPI: 'numberOfFiles',
-    },
-  ],
+  landingPageStatsBar: [],
   tile1: {
     alt: '',
     img: 'https://raw.githubusercontent.com/CBIIT/bento-frontend/master/src/assets/landing/tileAbout.png',
@@ -70,11 +48,4 @@ export const landingPageData = {
 };
 
 // --------------- GraphQL query - Retrieve Landing page data --------------
-export const GET_LANDING_PAGE_DATA_QUERY = gql`{
-  numberOfPrograms
-  numberOfStudies
-  numberOfSubjects
-  numberOfSamples
-  numberOfFiles
-  }
-  `;
+export const GET_LANDING_PAGE_DATA_QUERY = false;
